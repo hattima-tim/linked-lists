@@ -27,7 +27,14 @@ function LinkedList() {
         tmp.next = Node(value, null)
         console.log(list)
     }
-    return {append}
+
+    function prepend(value) {
+        if (!value && value !== 0) return;
+        list = Node(value, list)
+        console.log(list)
+    }
+    return {append,prepend}
 }
 
 LinkedList().append(10)
+LinkedList().prepend(0)
