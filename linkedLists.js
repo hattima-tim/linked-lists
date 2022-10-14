@@ -1,3 +1,7 @@
+function Node(value, nextNode) {
+    return {value,next:nextNode}
+}
+
 function LinkedList() {
     let list = {
         value: 1,
