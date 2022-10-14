@@ -16,4 +16,18 @@ function LinkedList() {
             }
         }
     };
+
+    function append(value){
+        if(!value && value!==0) return;
+
+        let tmp = list;
+        while (tmp.next !== null) {
+            tmp = tmp.next;
+        }
+        tmp.next = Node(value, null)
+        console.log(list)
+    }
+    return {append}
 }
+
+LinkedList().append(10)
