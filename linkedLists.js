@@ -47,7 +47,15 @@ function LinkedList() {
   function head() {
     return list;
   }
-  return { append, prepend, size ,head};
+
+  function tail() {
+    let tmp = list;
+    while (tmp.next !== null) {
+      tmp = tmp.next;
+    }
+    return tmp;
+  }
+  return { append, prepend, size ,head,tail};
 }
 
 const linkedList = LinkedList();
@@ -59,3 +67,5 @@ console.log(linkedList.prepend(0));
 console.log(linkedList.size()); //6
 
 console.log(linkedList.head())
+
+console.log(linkedList.tail())
