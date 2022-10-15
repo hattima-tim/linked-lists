@@ -55,7 +55,21 @@ function LinkedList() {
     }
     return tmp;
   }
-  return { append, prepend, size ,head,tail};
+
+  function at(index) {
+    if (typeof index !== "number") return;
+
+    let nodeCount = 0;
+    let tmp = list;
+
+    while (tmp !== null) {
+      if (nodeCount === index) return tmp;
+      nodeCount += 1;
+      tmp = tmp.next;
+    }
+    return "Not Found";
+  }
+  return { append, prepend, size, head, tail, at };
 }
 
 const linkedList = LinkedList();
@@ -66,6 +80,8 @@ console.log(linkedList.prepend(0));
 
 console.log(linkedList.size()); //6
 
-console.log(linkedList.head())
+console.log(linkedList.head());
 
-console.log(linkedList.tail())
+console.log(linkedList.tail());
+
+console.log(linkedList.at(3));
