@@ -43,7 +43,11 @@ function LinkedList() {
     }
     return nodeCount;
   }
-  return { append, prepend, size };
+
+  function head() {
+    return list;
+  }
+  return { append, prepend, size ,head};
 }
 
 const linkedList = LinkedList();
@@ -53,3 +57,5 @@ console.log(linkedList.append(10));
 console.log(linkedList.prepend(0));
 
 console.log(linkedList.size()); //6
+
+console.log(linkedList.head())
