@@ -25,13 +25,13 @@ function LinkedList() {
       tmp = tmp.next;
     }
     tmp.next = Node(value, null);
-    console.log(list);
+    return list;
   }
 
   function prepend(value) {
     if (!value && value !== 0) return;
     list = Node(value, list);
-    console.log(list);
+    return list;
   }
 
   function size() {
@@ -47,6 +47,9 @@ function LinkedList() {
 }
 
 const linkedList = LinkedList();
-linkedList.append(10);
-linkedList.prepend(0);
+
+console.log(linkedList.append(10));
+
+console.log(linkedList.prepend(0));
+
 console.log(linkedList.size()); //6
