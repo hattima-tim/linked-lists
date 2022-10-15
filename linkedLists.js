@@ -69,7 +69,20 @@ function LinkedList() {
     }
     return "Not Found";
   }
-  return { append, prepend, size, head, tail, at };
+
+  function pop() {
+    if (size() === 1) return {};
+
+    let tmp = list;
+    let prevNode = tmp;
+    while (tmp.next !== null) {
+      prevNode = tmp;
+      tmp = tmp.next;
+    }
+    prevNode.next = null;
+    return list;
+  }
+  return { append, prepend, size, head, tail, at, pop };
 }
 
 const linkedList = LinkedList();
@@ -85,3 +98,5 @@ console.log(linkedList.head());
 console.log(linkedList.tail());
 
 console.log(linkedList.at(3));
+
+console.log(linkedList.pop());
