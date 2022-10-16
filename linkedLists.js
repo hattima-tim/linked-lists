@@ -106,7 +106,30 @@ function LinkedList() {
     }
     return null;
   }
-  return { append, prepend, size, head, tail, at, pop, contains, find };
+
+  function toString() {
+    let valuesOfList = [];
+    let tmp = list;
+
+    while (tmp != null) {
+      valuesOfList.push(tmp.value);
+      tmp = tmp.next;
+    }
+    return valuesOfList.join("->");
+  }
+  
+  return {
+    append,
+    prepend,
+    size,
+    head,
+    tail,
+    at,
+    pop,
+    contains,
+    find,
+    toString,
+  };
 }
 
 const linkedList = LinkedList();
@@ -148,4 +171,6 @@ console.log(`linkedList contains k: ` + linkedList.contains("k"));
 
 console.log(`index of 4 at the linkedList: ` + linkedList.find(4));
 console.log(`index of 10 at the linkedList: ` + linkedList.find(10));
+
+console.log(`values of the list: ` + linkedList.toString())
 module.exports = { linkedList };
