@@ -87,16 +87,36 @@ function LinkedList() {
 
 const linkedList = LinkedList();
 
-console.log(linkedList.append(10));
+console.log(
+  `append result: 
+  ${JSON.stringify(linkedList.append(10), null, 4)}
+  `
+);
 
-console.log(linkedList.prepend(0));
+console.log(
+  `prepend result:
+  ${JSON.stringify(linkedList.prepend(0), null, 4)}
+  `
+);
 
-console.log(linkedList.size()); //6
+console.log(`size: ` + linkedList.size()); //6
 
-console.log(linkedList.head());
+console.log(
+  `head node:
+  ${JSON.stringify(linkedList.head(), null, 4)}
+  `
+);
 
-console.log(linkedList.tail());
+console.log(
+  `tail node:
+    ${JSON.stringify(linkedList.tail(), null, 4)}
+    `
+);
 
-console.log(linkedList.at(3));
+console.log(`node at index 3:
+${JSON.stringify(linkedList.at(3), null, 4)}`);
 
-console.log(linkedList.pop());
+console.log(`linkedList after removing last node:
+${JSON.stringify(linkedList.pop(), null, 4)}`);
+
+module.exports = { linkedList };
