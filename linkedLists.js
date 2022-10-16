@@ -92,8 +92,21 @@ function LinkedList() {
       tmp = tmp.next;
     }
     return false;
-  }  
-  return { append, prepend, size, head, tail, at, pop, contains };
+  }
+
+  function find(value) {
+    const valueToBeChecked = value;
+    let nodeCount = 0;
+    let tmp = list;
+
+    while (tmp != null) {
+      if (valueToBeChecked === tmp.value) return nodeCount;
+      nodeCount += 1;
+      tmp = tmp.next;
+    }
+    return null;
+  }
+  return { append, prepend, size, head, tail, at, pop, contains, find };
 }
 
 const linkedList = LinkedList();
@@ -130,6 +143,9 @@ ${JSON.stringify(linkedList.at(3), null, 4)}`);
 console.log(`linkedList after removing last node:
 ${JSON.stringify(linkedList.pop(), null, 4)}`);
 
-console.log(`linkedList contains 1: ` + linkedList.contains(1))
-console.log(`linkedList contains k: ` + linkedList.contains('k'))
+console.log(`linkedList contains 1: ` + linkedList.contains(1));
+console.log(`linkedList contains k: ` + linkedList.contains("k"));
+
+console.log(`index of 4 at the linkedList: ` + linkedList.find(4));
+console.log(`index of 10 at the linkedList: ` + linkedList.find(10));
 module.exports = { linkedList };
