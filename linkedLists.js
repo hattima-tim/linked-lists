@@ -155,37 +155,46 @@ function LinkedList() {
 
 const linkedList = LinkedList();
 
+const listAfterAppend = linkedList.append(10);
 console.log(
   `append result: 
-  ${JSON.stringify(linkedList.append(10), null, 4)}
+  ${JSON.stringify(listAfterAppend, null, 4)}
   `
 );
 
+const listAfterPrepend = linkedList.prepend(0);
 console.log(
   `prepend result:
-  ${JSON.stringify(linkedList.prepend(0), null, 4)}
+  ${JSON.stringify(listAfterPrepend, null, 4)}
   `
 );
 
 console.log(`size: ` + linkedList.size()); //6
 
+const headNode = linkedList.head();
 console.log(
   `head node:
-  ${JSON.stringify(linkedList.head(), null, 4)}
+  ${JSON.stringify(headNode, null, 4)}
   `
 );
 
+const tailNode = linkedList.tail();
 console.log(
   `tail node:
-    ${JSON.stringify(linkedList.tail(), null, 4)}
+    ${JSON.stringify(tailNode, null, 4)}
     `
 );
 
-console.log(`node at index 3:
-${JSON.stringify(linkedList.at(3), null, 4)}`);
+const nodeAtIndexThree = linkedList.at(3);
+console.log(
+  `node at index 3:
+    ${JSON.stringify(nodeAtIndexThree, null, 4)}
+    `
+);
 
+const listAfterRemovingLastNode = linkedList.pop();
 console.log(`linkedList after removing last node:
-${JSON.stringify(linkedList.pop(), null, 4)}`);
+${JSON.stringify(listAfterRemovingLastNode, null, 4)}`);
 
 console.log(`linkedList contains 1: ` + linkedList.contains(1));
 console.log(`linkedList contains k: ` + linkedList.contains("k"));
@@ -196,12 +205,12 @@ console.log(`index of 10 at the linkedList: ` + linkedList.find(10));
 console.log(`values of the list: ` + linkedList.toString());
 
 const listAfterInsertion = linkedList.insertAt("k", 1);
-const listAfterInsertion2 = linkedList.insertAt("a", 5);
+const listAfterInsertion2 = linkedList.insertAt("a", 0);
 console.log(
-  `insertAt 'k' at index 1:  ${JSON.stringify(listAfterInsertion, null, 4)}`
+  `insert 'k' at index 1:  ${JSON.stringify(listAfterInsertion, null, 4)}`
 );
 console.log(
-  `insertAt 'a' at index 0:  ${JSON.stringify(listAfterInsertion2, null, 4)}`
+  `insert 'a' at index 0:  ${JSON.stringify(listAfterInsertion2, null, 4)}`
 );
 
 module.exports = { linkedList };
