@@ -118,24 +118,46 @@ function LinkedList() {
     return valuesOfList.join("->");
   }
 
-  function insertAt(value, index) {
+  function doInsertionOrRemoval(actionName, index, value) {
+    let deepCloneOfList = JSON.parse(JSON.stringify(list));
+    
+    // this clone is necessary to prevent the following bug
+    // const listAfterRemovalOfNodeOne = LinkedList().removeAt(0)
+    // const listAfterRemovalOfNodeThree = LinkedList().removeAt(2)
+    // console.log(listAfterRemovalOfNodeOne)
+    // console.log(listAfterRemovalOfNodeThree)
+    // without the deep clone
+    // both console log prints the value of listAfterRemovalOfNodeThree
+
     if (index >= size()) return;
-    if (index === 0) return Node(value, list);
+    if (index === 0) {
+      list = actionName === "insertion" ? Node(value, list) : list.next;
+      return list;
+    }
 
     let nodeCount = 0;
-    let tmp = list;
+    let tmp = deepCloneOfList;
     let prevNode = null;
 
     while (tmp !== null) {
       if (index === nodeCount) {
-        prevNode.next = Node(value, tmp);
-        return list;
+        prevNode.next =
+          actionName === "insertion" ? Node(value, tmp) : tmp.next;
+        return (list = deepCloneOfList);
       }
 
       nodeCount += 1;
       prevNode = tmp;
       tmp = tmp.next;
     }
+  }
+
+  function insertAt(value, index) {
+    return doInsertionOrRemoval("insertion", index, value);
+  }
+
+  function removeAt(index) {
+    return doInsertionOrRemoval("removal", index);
   }
 
   return {
@@ -150,6 +172,7 @@ function LinkedList() {
     find,
     toString,
     insertAt,
+    removeAt,
   };
 }
 
@@ -213,4 +236,12 @@ console.log(
   `insert 'a' at index 0:  ${JSON.stringify(listAfterInsertion2, null, 4)}`
 );
 
+const listAfterRemoval = linkedList.removeAt(0);
+const listAfterRemoval2 = linkedList.removeAt(2);
+console.log(
+  `remove node at index 0:  ${JSON.stringify(listAfterRemoval, null, 4)}`
+);
+console.log(
+  `remove node at index 2:  ${JSON.stringify(listAfterRemoval2, null, 4)}`
+);
 module.exports = { linkedList };
