@@ -117,7 +117,27 @@ function LinkedList() {
     }
     return valuesOfList.join("->");
   }
-  
+
+  function insertAt(value, index) {
+    if (index >= size()) return;
+    if (index === 0) return Node(value, list);
+
+    let nodeCount = 0;
+    let tmp = list;
+    let prevNode = null;
+
+    while (tmp !== null) {
+      if (index === nodeCount) {
+        prevNode.next = Node(value, tmp);
+        return list;
+      }
+
+      nodeCount += 1;
+      prevNode = tmp;
+      tmp = tmp.next;
+    }
+  }
+
   return {
     append,
     prepend,
@@ -129,6 +149,7 @@ function LinkedList() {
     contains,
     find,
     toString,
+    insertAt,
   };
 }
 
@@ -172,5 +193,15 @@ console.log(`linkedList contains k: ` + linkedList.contains("k"));
 console.log(`index of 4 at the linkedList: ` + linkedList.find(4));
 console.log(`index of 10 at the linkedList: ` + linkedList.find(10));
 
-console.log(`values of the list: ` + linkedList.toString())
+console.log(`values of the list: ` + linkedList.toString());
+
+const listAfterInsertion = linkedList.insertAt("k", 1);
+const listAfterInsertion2 = linkedList.insertAt("a", 5);
+console.log(
+  `insertAt 'k' at index 1:  ${JSON.stringify(listAfterInsertion, null, 4)}`
+);
+console.log(
+  `insertAt 'a' at index 0:  ${JSON.stringify(listAfterInsertion2, null, 4)}`
+);
+
 module.exports = { linkedList };
