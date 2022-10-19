@@ -20,12 +20,20 @@ function LinkedList() {
   function append(value) {
     if (!value && value !== 0) return;
 
-    let tmp = list;
+    let deepCloneOfList = JSON.parse(JSON.stringify(list));
+    
+    //this clone is necessary to prevent the following bug
+    // const listAfterAppendingOne = LinkedList().append(1);
+    // const listAfterAppendingTwo = LinkedList().append(2);
+    // console.log(listAfterAppendingOne)
+    // without the deep clone, console log will print
+    // the value of listAfterAppendingTwo
+    let tmp = deepCloneOfList;
     while (tmp.next !== null) {
       tmp = tmp.next;
     }
     tmp.next = Node(value, null);
-    return list;
+    return list = deepCloneOfList;
   }
 
   function prepend(value) {
